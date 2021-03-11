@@ -1,7 +1,7 @@
-import {NextFunction, Request, Response} from 'express';
-import {Pool} from 'pg';
+import { NextFunction, Request, Response } from 'express';
+import { Pool } from 'pg';
 
-import {Settings} from './Types/Settings';
+import { Settings } from './Types/Settings';
 
 export * from './Types';
 declare global {
