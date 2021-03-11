@@ -1,4 +1,4 @@
-import {Request} from 'express';
+import {NextFunction, Request, Response} from 'express';
 import {Pool} from 'pg';
 
 import {Settings} from './Types/Settings';
@@ -12,8 +12,10 @@ declare global {
   }
 }
 
-export default (settings: Settings) => (req: Request) => {
+export default (settings: Settings) => (req: Request, res: Response, next: NextFunction) => {
   const db = new Pool({ connectionString: settings.connectionString });
 
   req.postgres = db;
+
+  next();
 };
