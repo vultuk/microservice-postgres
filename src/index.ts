@@ -1,19 +1,21 @@
-import { NextFunction, Request, Response } from 'express';
-import { Pool } from 'pg';
+import {NextFunction, Request, Response} from 'express';
+import {Pool as PoolPg} from 'pg';
 
-import { Settings } from './Types/Settings';
+import {Settings} from './Types/Settings';
 
 export * from './Types';
+export type Pool = PoolPg;
+
 declare global {
   namespace Express {
     interface Request {
-      postgres: Pool;
+      postgres: PoolPg;
     }
   }
 }
 
 export default (settings: Settings) => (req: Request, res: Response, next: NextFunction) => {
-  const db = new Pool({ connectionString: settings.connectionString });
+  const db = new PoolPg({ connectionString: settings.connectionString });
 
   req.postgres = db;
 
