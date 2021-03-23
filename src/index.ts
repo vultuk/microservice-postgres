@@ -1,7 +1,7 @@
-import {NextFunction, Request, Response} from 'express';
-import {Pool as PoolPg} from 'pg';
+import { NextFunction, Request, Response } from 'express';
+import { Pool as PoolPg } from 'pg';
 
-import {Settings} from './Types/Settings';
+import { Settings } from './Types/Settings';
 
 export * from './Types';
 export type Pool = PoolPg;
